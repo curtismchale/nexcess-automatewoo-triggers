@@ -38,7 +38,10 @@ class Nexcess_Add_To_Team_Trigger extends AutomateWoo\Trigger{
 	 *
 	 * @param $user_id
 	 */
-	public function catch_hooks( $user_id ) {
+	public function catch_hooks( $member ) {
+
+		$user = $member->get_user();
+		$user_id = $user->ID;
 
 		// get/create customer object from the user id
 		$customer = AutomateWoo\Customer_Factory::get_by_user_id( absint( $user_id ) );
